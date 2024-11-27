@@ -59,27 +59,27 @@ public class PaymentActivity extends AppCompatActivity {
                     int invoiceID = dbHelper.getInvoiceID(userID);
                     if (invoiceID != -1) {
                      dbHelper.addInvoiceDetail(invoiceID, userID);
-                     Toast.makeText(PaymentActivity.this,"add Invoice successful",Toast.LENGTH_SHORT).show();
+                     Toast.makeText(PaymentActivity.this,"add Invoice successful" ,Toast.LENGTH_SHORT).show();
                     }
-                Dialog dialog = new Dialog(PaymentActivity.this);
-                dialog.setContentView(R.layout.dialog_sucess);
-                dialog.setCancelable(false);
-                // Áp dụng nền với bo góc
-                dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_dialog);
-                // Tùy chỉnh kích thước dialog
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                dialog.show();
-                goBack = dialog.findViewById(R.id.goBack);
-                goBack.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int userID = dbHelper.getUserId(PaymentActivity.this);
-                        dbHelper.deleteAllCard(userID);
-                        Intent intent1 = new Intent(PaymentActivity.this, HomeActivity.class);
-                        startActivity(intent1);
-                        finishAffinity();
-                    }
-                });
+//                Dialog dialog = new Dialog(PaymentActivity.this);
+//                dialog.setContentView(R.layout.dialog_sucess);
+//                dialog.setCancelable(false);
+//                // Áp dụng nền với bo góc
+//                dialog.getWindow().setBackgroundDrawableResource(R.drawable.border_dialog);
+//                // Tùy chỉnh kích thước dialog
+//                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                dialog.show();
+//                goBack = dialog.findViewById(R.id.goBack);
+//                goBack.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        int userID = dbHelper.getUserId(PaymentActivity.this);
+//                        dbHelper.deleteAllCard(userID);
+//                        Intent intent1 = new Intent(PaymentActivity.this, HomeActivity.class);
+//                        startActivity(intent1);
+//                        finishAffinity();
+//                    }
+//                });
             }
         });
     }

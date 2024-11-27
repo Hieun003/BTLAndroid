@@ -40,7 +40,7 @@ public class InvoiceDetailActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         dbHelper = new DBHelper(this);
-        List<Product> InvoiceDetailList = dbHelper.getALLInvoceDetail(invoiceID);
+        List<Product> InvoiceDetailList = dbHelper.getInvoiceDetail(invoiceID);
 
         invoiceDetailAdapter = new InvoiceDetailAdapter(this,InvoiceDetailList);
         recyclerView.setAdapter(invoiceDetailAdapter);

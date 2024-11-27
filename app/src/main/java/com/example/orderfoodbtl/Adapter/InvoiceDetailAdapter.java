@@ -38,7 +38,7 @@ public class InvoiceDetailAdapter extends RecyclerView.Adapter<InvoiceDetailAdap
         Product product = InvoiceDetailList.get(position);
         holder.itemImage.setImageResource(product.getImageResId());
         holder.itemName.setText(product.getName());
-        holder.Price.setText(String.valueOf(product.getDetailInvoicePrice()));
+        holder.Price.setText(String.valueOf(product.getPrice()));
         holder.Quantity.setText(String.valueOf(product.getQuantity()));
     }
 
