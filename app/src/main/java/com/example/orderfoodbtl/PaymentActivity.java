@@ -1,5 +1,7 @@
 package com.example.orderfoodbtl;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +51,16 @@ public class PaymentActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                 dbHelper = new DBHelper(PaymentActivity.this);
+                    int userID = dbHelper.getUserId(PaymentActivity.this);
+                    double totalValue;
+                    totalValue = Double.parseDouble(String.valueOf(totalValue2.getText().toString().replace("$", " ")));
+                    dbHelper.addInvoice(userID, totalValue);
+                    int invoiceID = dbHelper.getInvoiceID(userID);
+                    if (invoiceID != -1) {
+                     dbHelper.addInvoiceDetail(invoiceID, userID);
+                     Toast.makeText(PaymentActivity.this,"add Invoice successful",Toast.LENGTH_SHORT).show();
+                    }
                 Dialog dialog = new Dialog(PaymentActivity.this);
                 dialog.setContentView(R.layout.dialog_sucess);
                 dialog.setCancelable(false);
@@ -60,7 +73,6 @@ public class PaymentActivity extends AppCompatActivity {
                 goBack.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dbHelper = new DBHelper(PaymentActivity.this);
                         int userID = dbHelper.getUserId(PaymentActivity.this);
                         dbHelper.deleteAllCard(userID);
                         Intent intent1 = new Intent(PaymentActivity.this, HomeActivity.class);

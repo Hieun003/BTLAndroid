@@ -9,6 +9,7 @@ public class Product {
     private int imageResId;
     private int quantity;
     private double totalPrice;
+    private double detailInvoicePrice;
 
     public Product(String category, int imageResId, String name, double rating, double price) {
         this.category = category;
@@ -35,6 +36,21 @@ public class Product {
         this.rating = rating;
         this.price = price;
         this.quantity=1;
+    }
+    public Product(int id, String name, int imageResId, int quantity, double detailInvoicePrice){
+        this.id = id;
+        this.name = name;
+        this.imageResId = imageResId;
+        this.quantity=quantity;
+        this.detailInvoicePrice = detailInvoicePrice;
+    }
+
+    public double getDetailInvoicePrice() {
+        return detailInvoicePrice;
+    }
+
+    public void setDetailInvoicePrice(double detailInvoicePrice) {
+        this.detailInvoicePrice = detailInvoicePrice;
     }
 
     public double getTotalPrice() {
